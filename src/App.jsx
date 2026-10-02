@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import profileImage from "./assets/profile.jpg";
 
 import cognifyzCert from "./Certificates/cognifyz.jpeg";
 import deloitteCert from "./Certificates/deloitte.jpeg";
@@ -254,27 +255,27 @@ function App() {
           </div>
 
           {/* PHOTO */}
-          <div className="flex justify-center lg:justify-end">
+<div className="flex justify-center lg:justify-end lg:mr-16">
+  <div className="relative">
 
-            <div className="relative">
+    {/* Outer glowing ring */}
+    <div className="absolute -inset-[18px] rounded-full border border-indigo-600/50"></div>
 
-              <div className="absolute inset-[-18px] rounded-full border border-indigo-500/10" />
+    {/* Inner glowing ring */}
+    <div className="absolute -inset-[9px] rounded-full border border-cyan-500/40"></div>
 
-              <div className="absolute inset-[-9px] rounded-full border-2 border-indigo-500/30" />
+    {/* Profile photo */}
+    <div className="relative h-72 w-72 overflow-hidden rounded-full">
+      <img
+        src={profileImage}
+        alt="Vaishnavi Sonwane"
+        className="h-full w-full object-cover"
+      />
+    </div>
 
-              <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-[#11184a] shadow-[0_0_60px_rgba(99,102,241,0.18)] sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+  </div>
 
-                <img
-                  src="/profile.jpg"
-                  alt="Vaishnavi Sonwane"
-                  className="h-full w-full object-cover"
-                />
-
-              </div>
-
-            </div>
-          </div>
-
+</div>
         </div>
       </section>
 

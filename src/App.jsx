@@ -1,253 +1,235 @@
 import React, { useState } from "react";
-import "./index.css";
 
-/* =========================================================
-   AUTOMATICALLY LOAD ALL CERTIFICATE IMAGES
-   Folder: src/Certificates/
-   ========================================================= */
-
-const certificateFiles = import.meta.glob(
-  "./Certificates/*.{jpeg,jpg,png}",
-  {
-    eager: true,
-    query: "?url",
-    import: "default",
-  }
-);
-
-/* Find certificate image by filename keyword */
-function getCertificateImage(keyword) {
-  const file = Object.entries(certificateFiles).find(([path]) =>
-    path.toLowerCase().includes(keyword.toLowerCase())
-  );
-
-  return file ? file[1] : "";
-}
+import cognifyzCert from "./Certificates/cognifyz.jpeg";
+import deloitteCert from "./Certificates/deloitte.jpeg";
+import employmentCert from "./Certificates/employment-communication.jpeg";
+import equityCert from "./Certificates/equity-edge.jpeg";
+import eyCert from "./Certificates/ey-techathon.jpeg";
+import genathonCert from "./Certificates/genathon.jpeg";
+import hackindiaCert from "./Certificates/hackindia.jpeg";
+import persevexCert from "./Certificates/persevex.jpeg";
+import tataCert from "./Certificates/tata-crucible.jpeg";
 
 function App() {
   const [selectedCertificate, setSelectedCertificate] = useState(null);
 
-  /* =========================================================
-     PROJECTS
-     ========================================================= */
-
   const projects = [
     {
-      number: "01",
-      title: "Personal Finance Tracker",
-      description:
-        "A Python desktop application for tracking expenses, managing budgets and savings, organizing spending categories, and generating visual financial reports.",
-      tags: ["Python", "Tkinter", "OpenPyXL", "Matplotlib"],
-    },
-
-    {
-      number: "02",
-      title: "Data Analytics Dashboard",
-      description:
-        "An interactive Power BI dashboard built to explore retail data, identify trends, analyze revenue and present useful business insights.",
-      tags: ["Power BI", "Power Query", "Excel", "Data Analytics"],
-    },
-
-    {
-      number: "03",
-      title: "Medi-4-U",
-      description:
-        "A community-focused application concept that helps people donate unused medicines and connect available medicines with people who need them.",
-      tags: ["Community", "Healthcare", "Database"],
-    },
-
-    {
-      number: "04",
       title: "AI-Powered Data Analyst & SQL Copilot",
       description:
-        "Built an AI analytics platform that converts natural-language questions into validated SQL, performs automated EDA and anomaly detection, recommends visualizations/KPIs, and generates explainable business insights from uploaded datasets.",
-      tags: ["Python", "SQL", "AI", "Data Analytics"],
+        "An AI-powered analytics application that allows users to upload datasets, explore data, generate SQL queries and obtain meaningful analytical insights.",
+      tags: ["Python", "SQL", "AI", "Data Analytics", "Streamlit"],
+    },
+    {
+      title: "Personal Finance Tracker",
+      description:
+        "A Python desktop application for tracking expenses, managing budgets and savings, organizing spending categories and generating analytical reports.",
+      tags: ["Python", "Tkinter", "OpenPyXL", "Matplotlib"],
+    },
+    {
+      title: "Data Analytics Dashboard",
+      description:
+        "An interactive Power BI dashboard built to explore retail data, identify trends, analyze revenue and present business insights.",
+      tags: ["Power BI", "Power Query", "Excel", "Data Analytics"],
+    },
+    {
+      title: "Medi-4-U",
+      description:
+        "A community-focused concept designed to help collect unused medicines and make them available for people who need them.",
+      tags: ["Social Impact", "Technology", "Community"],
     },
   ];
-
-  /* =========================================================
-     EXPERIENCE
-     ========================================================= */
 
   const experiences = [
     {
-      title: "Data Analytics Intern",
+      role: "Power BI Intern",
       organization: "Cognifyz Technologies",
-      period: "Internship",
       description:
-        "Worked on data exploration, analysis and visualization tasks using analytical tools and business datasets.",
-      tags: ["Data Analytics", "Python", "Power BI"],
+        "Worked on data exploration, analysis and visualization using Power BI. Created dashboards and transformed raw datasets into meaningful business insights.",
     },
-
     {
-      title: "Data Visualization & Analytics Simulations",
-      organization: "Forage",
-      period: "Virtual Experience",
+      role: "Data Analytics Job Simulation",
+      organization: "Deloitte Australia",
       description:
-        "Completed practical data analytics and visualization simulations involving business scenarios, data interpretation, dashboard creation and analytical insights.",
-      tags: ["Data Visualization", "Power BI", "Analytics"],
+        "Completed a practical data analytics simulation involving data analysis, visualization and business-focused insights.",
+    },
+    {
+      role: "Data Visualisation Job Simulation",
+      organization: "Tata",
+      description:
+        "Worked with business datasets, data cleaning and visualization tasks to communicate analytical findings through dashboards.",
     },
   ];
-
-  /* =========================================================
-     CERTIFICATIONS
-     ========================================================= */
 
   const certificates = [
     {
       title: "Data Analytics Internship",
       organization: "Cognifyz Technologies",
-      keyword: "cognifyz",
+      image: cognifyzCert,
     },
-
     {
       title: "Data Analytics Job Simulation",
       organization: "Deloitte",
-      keyword: "deloitte",
+      image: deloitteCert,
     },
-
     {
-      title: "EY Techathon 6.0 – Round 2",
-      organization: "EY",
-      keyword: "ey-techathon",
+      title: "Employment Communication",
+      organization: "NPTEL",
+      image: employmentCert,
     },
-
     {
       title: "Equity Edge E-Summit '25",
       organization: "Jadavpur University",
-      keyword: "equity-edge",
+      image: equityCert,
     },
-
     {
-      title: "Genathon 3.0 Hack Certificate",
-      organization: "IIT Nagpur",
-      keyword: "genathon",
+      title: "EY Techathon 6.0",
+      organization: "EY",
+      image: eyCert,
     },
-
     {
-      title: "HackIndia Spark-12",
-      organization: "HackIndia · BrainForge AI",
-      keyword: "hackindia",
+      title: "Genathon 3.0",
+      organization: "IIIT Nagpur",
+      image: genathonCert,
     },
-
     {
-      title: "Employment Communication – Elite",
-      organization: "NPTEL · IIT Kharagpur",
-      keyword: "employment-communication",
+      title: "HackIndia × BrainForge.AI Hackathon",
+      organization: "HackIndia",
+      image: hackindiaCert,
     },
-
     {
-      title: "Data Analytics Internship",
+      title: "Data Analytics Experience",
       organization: "Persevex",
-      keyword: "persevex",
+      image: persevexCert,
     },
-
     {
-      title: "TATA Crucible Certificate",
+      title: "TATA Crucible Campus Quiz 2025",
       organization: "TATA",
-      keyword: "tata-crucible",
+      image: tataCert,
     },
   ];
 
-  /* =========================================================
-     SKILLS
-     ========================================================= */
-
   const skills = [
     "Python",
+    "SQL",
     "C",
     "C++",
     "Java",
-    "SQL",
     "Power BI",
     "Excel",
-    "Power Query",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "React",
-    "Tkinter",
-    "OpenPyXL",
+    "Pandas",
     "Matplotlib",
-    "Git",
-    "GitHub",
+    "Tkinter",
+    "Git & GitHub",
     "Data Analytics",
   ];
 
   return (
-    <div className="portfolio">
+    <div className="min-h-screen bg-[#070b2b] text-white font-sans">
 
-      {/* =====================================================
-          NAVBAR
-          ===================================================== */}
+      {/* NAVBAR */}
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-[#05081f]/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
 
-      <nav className="navbar">
-        <div className="nav-container">
-
-          <a href="#home" className="logo">
-            Vaishnavi<span>.</span>
+          <a
+            href="#home"
+            className="text-2xl font-extrabold tracking-tight text-[#818cf8]"
+          >
+            Vaishnavi.
           </a>
 
-          <div className="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#experience">Experience</a>
-            <a href="#certifications">Certifications</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-          </div>
+          <div className="hidden items-center gap-7 text-sm font-semibold text-slate-300 md:flex">
+            <a href="#home" className="transition hover:text-white">
+              Home
+            </a>
 
+            <a href="#about" className="transition hover:text-white">
+              About
+            </a>
+
+            <a href="#projects" className="transition hover:text-white">
+              Projects
+            </a>
+
+            <a href="#experience" className="transition hover:text-white">
+              Experience
+            </a>
+
+            <a href="#certifications" className="transition hover:text-white">
+              Certifications
+            </a>
+
+            <a href="#skills" className="transition hover:text-white">
+              Skills
+            </a>
+
+            <a href="#contact" className="transition hover:text-white">
+              Contact
+            </a>
+          </div>
         </div>
       </nav>
 
+      {/* HERO */}
+      <section
+        id="home"
+        className="relative flex min-h-screen items-center overflow-hidden px-6 pt-24"
+      >
+        {/* Background glow */}
+        <div className="pointer-events-none absolute left-1/2 top-1/3 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-600/10 blur-3xl" />
 
-      {/* =====================================================
-          HOME
-          ===================================================== */}
+        <div className="relative mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:px-10">
 
-      <section id="home" className="hero">
+          {/* LEFT */}
+          <div className="text-center lg:text-left">
 
-        <div className="hero-container">
-
-          <div className="hero-content">
-
-            <p className="eyebrow">
-              HELLO I'M,
+            <p className="mb-4 text-sm font-bold uppercase tracking-[0.25em] text-[#818cf8]">
+              Hello, I'm
             </p>
 
-            <h1>
-              Vaishnavi <span>Sonwane</span>
+            <h1 className="text-5xl font-black leading-[0.95] tracking-tight sm:text-6xl lg:text-7xl">
+              Vaishnavi
+              <br />
+              <span className="text-[#818cf8]">Sonwane</span>
             </h1>
 
-            <h2>
-              Data Analyst & Computer Engineering Student
+            <h2 className="mt-7 text-2xl font-bold leading-tight text-slate-200 sm:text-3xl">
+              Data Analyst & Computer
+              <br className="hidden sm:block" />
+              Engineering Student
             </h2>
 
-            <p className="hero-description">
-              I enjoy transforming data into meaningful insights and
-              building practical technology solutions using Python,
-              SQL, Power BI and modern development tools.
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-400 lg:mx-0">
+              I enjoy transforming data into meaningful insights and building
+              practical technology solutions using Python, SQL, Power BI and
+              modern development tools.
             </p>
 
-            <div className="hero-buttons">
+            <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
 
-              <a href="#projects" className="primary-btn">
+              <a
+                href="#projects"
+                className="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-600/20 transition hover:-translate-y-1 hover:bg-indigo-500"
+              >
                 View Projects
               </a>
 
-              <a href="#contact" className="secondary-btn">
+              <a
+                href="#contact"
+                className="rounded-lg border border-slate-700 bg-transparent px-6 py-3 text-sm font-bold text-slate-200 transition hover:border-indigo-400 hover:text-white"
+              >
                 Contact Me
               </a>
 
             </div>
 
-            <div className="social-mini">
+            <div className="mt-7 flex justify-center gap-6 text-sm lg:justify-start">
 
               <a
                 href="https://github.com/Vaishnavi-Sonwane"
                 target="_blank"
                 rel="noreferrer"
+                className="font-medium text-slate-400 transition hover:text-white"
               >
                 GitHub ↗
               </a>
@@ -256,503 +238,348 @@ function App() {
                 href="https://www.linkedin.com/in/vaishnavi-sonwane-ba4274342/"
                 target="_blank"
                 rel="noreferrer"
+                className="font-medium text-slate-400 transition hover:text-white"
               >
                 LinkedIn ↗
               </a>
 
-            </div>
+              <a
+                href="mailto:vaishnaviksonwane2006@gmail.com"
+                className="font-medium text-slate-400 transition hover:text-white"
+              >
+                Email ↗
+              </a>
 
+            </div>
           </div>
 
+          {/* PHOTO */}
+          <div className="flex justify-center lg:justify-end">
 
-          <div className="hero-image-wrapper">
+            <div className="relative">
 
-            <div className="hero-glow"></div>
+              <div className="absolute inset-[-18px] rounded-full border border-indigo-500/10" />
 
-            <img
-              src="/src/assets/profile.jpg"
-              alt="Vaishnavi Sonwane"
-              className="hero-image"
-            />
+              <div className="absolute inset-[-9px] rounded-full border-2 border-indigo-500/30" />
 
+              <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-[#11184a] shadow-[0_0_60px_rgba(99,102,241,0.18)] sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+
+                <img
+                  src="/profile.jpg"
+                  alt="Vaishnavi Sonwane"
+                  className="h-full w-full object-cover"
+                />
+
+              </div>
+
+            </div>
           </div>
 
         </div>
-
       </section>
 
+      {/* ABOUT */}
+      <section
+        id="about"
+        className="border-t border-white/5 px-6 py-24"
+      >
+        <div className="mx-auto max-w-5xl">
 
-      {/* =====================================================
-          ABOUT
-          ===================================================== */}
-
-      <section id="about" className="section">
-
-        <div className="container">
-
-          <p className="section-label">
-            ABOUT ME
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            About Me
           </p>
 
-          <h2 className="section-title">
-            Turning data into useful solutions.
+          <h2 className="mt-3 text-4xl font-black">
+            Turning data into useful insights.
           </h2>
 
-          <p className="about-text">
-            I am a Computer Engineering student interested in Data
-            Analytics, Python, SQL, Power BI and AI-driven applications.
-            I enjoy working on projects that combine programming, data
-            and real-world problem solving.
+          <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-400">
+            I am Vaishnavi Sonwane, a Computer Engineering student interested
+            in Data Analytics, Python, SQL, Power BI and practical technology
+            solutions. I enjoy working with datasets, creating dashboards and
+            developing applications that solve real-world problems.
           </p>
 
         </div>
-
       </section>
 
+      {/* PROJECTS */}
+      <section
+        id="projects"
+        className="border-t border-white/5 px-6 py-24"
+      >
+        <div className="mx-auto max-w-7xl">
 
-      {/* =====================================================
-          PROJECTS
-          ===================================================== */}
-
-      <section id="projects" className="section dark-section">
-
-        <div className="container">
-
-          <p className="section-label">
-            MY WORK
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            My Work
           </p>
 
-          <h2 className="section-title">
+          <h2 className="mt-3 text-4xl font-black">
             Projects
           </h2>
 
-          <div className="projects-grid">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
 
-            {projects.map((project) => (
-
+            {projects.map((project, index) => (
               <div
-                key={project.number}
-                className="project-card"
-              >
-
-                <div className="card-top">
-
-                  <span className="project-number">
-                    {project.number}
-                  </span>
-
-                  <span className="arrow">
-                    ↗
-                  </span>
-
-                </div>
-
-                <h3>
-                  {project.title}
-                </h3>
-
-                <p>
-                  {project.description}
-                </p>
-
-                <div className="tags">
-
-                  {project.tags.map((tag) => (
-
-                    <span key={tag}>
-                      {tag}
-                    </span>
-
-                  ))}
-
-                </div>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          EXPERIENCE
-          ===================================================== */}
-
-      <section id="experience" className="section">
-
-        <div className="container">
-
-          <p className="section-label">
-            EXPERIENCE
-          </p>
-
-          <h2 className="section-title">
-            Experience
-          </h2>
-
-          <div className="experience-grid">
-
-            {experiences.map((experience, index) => (
-
-              <div
-                className="experience-card"
                 key={index}
+                className="rounded-2xl border border-white/10 bg-[#0b1035]/70 p-7 transition duration-300 hover:-translate-y-2 hover:border-indigo-500/40 hover:bg-[#0e1442]"
               >
 
-                <div className="experience-number">
+                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-500/10 text-lg font-bold text-indigo-400">
                   0{index + 1}
                 </div>
 
-                <div className="experience-content">
+                <h3 className="text-2xl font-bold">
+                  {project.title}
+                </h3>
 
-                  <p className="experience-period">
-                    {experience.period}
-                  </p>
+                <p className="mt-4 leading-7 text-slate-400">
+                  {project.description}
+                </p>
 
-                  <h3>
-                    {experience.title}
-                  </h3>
-
-                  <h4>
-                    {experience.organization}
-                  </h4>
-
-                  <p>
-                    {experience.description}
-                  </p>
-
-                  <div className="tags">
-
-                    {experience.tags.map((tag) => (
-                      <span key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-
-                  </div>
-
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
               </div>
-
             ))}
 
           </div>
-
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          CERTIFICATIONS
-          ===================================================== */}
-
+      {/* EXPERIENCE */}
       <section
-        id="certifications"
-        className="section dark-section"
+        id="experience"
+        className="border-t border-white/5 px-6 py-24"
       >
+        <div className="mx-auto max-w-5xl">
 
-        <div className="container">
-
-          <p className="section-label">
-            ACHIEVEMENTS
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            Experience
           </p>
 
-          <h2 className="section-title">
-            Certifications
+          <h2 className="mt-3 text-4xl font-black">
+            Experience & Simulations
           </h2>
 
-          <p className="section-description">
-            Certifications, internships, hackathons and professional
-            achievements.
-          </p>
+          <div className="mt-10 space-y-6">
 
+            {experiences.map((experience, index) => (
+              <div
+                key={index}
+                className="rounded-2xl border border-white/10 bg-[#0b1035]/70 p-7"
+              >
 
-          <div className="certificate-grid">
+                <div className="flex flex-col justify-between gap-2 sm:flex-row">
 
-            {certificates.map((certificate) => {
-
-              const image = getCertificateImage(
-                certificate.keyword
-              );
-
-              return (
-
-                <div
-                  key={
-                    certificate.title +
-                    certificate.organization
-                  }
-                  className="certificate-card"
-                >
-
-                  {/* IMAGE */}
-
-                  <div className="certificate-image-container">
-
-                    {image ? (
-
-                      <img
-                        src={image}
-                        alt={certificate.title}
-                        className="certificate-image"
-                      />
-
-                    ) : (
-
-                      <div className="certificate-error">
-                        Certificate preview unavailable
-                      </div>
-
-                    )}
-
-                  </div>
-
-
-                  {/* DETAILS */}
-
-                  <div className="certificate-content">
-
-                    <div className="certificate-line"></div>
-
-                    <h3>
-                      {certificate.title}
+                  <div>
+                    <h3 className="text-xl font-bold">
+                      {experience.role}
                     </h3>
 
-                    <p>
-                      {certificate.organization}
+                    <p className="mt-1 font-semibold text-indigo-400">
+                      {experience.organization}
                     </p>
-
-                    <button
-                      className="certificate-button"
-                      onClick={() =>
-                        setSelectedCertificate({
-                          ...certificate,
-                          image,
-                        })
-                      }
-                    >
-                      View Certificate ↗
-                    </button>
-
                   </div>
+
+                  <span className="text-sm font-bold text-slate-600">
+                    0{index + 1}
+                  </span>
 
                 </div>
 
-              );
-
-            })}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CERTIFICATE POPUP
-          ===================================================== */}
-
-      {selectedCertificate && (
-
-        <div
-          className="certificate-modal"
-          onClick={() =>
-            setSelectedCertificate(null)
-          }
-        >
-
-          <div
-            className="certificate-modal-box"
-            onClick={(e) =>
-              e.stopPropagation()
-            }
-          >
-
-            <button
-              className="modal-close"
-              onClick={() =>
-                setSelectedCertificate(null)
-              }
-            >
-              ×
-            </button>
-
-            <div className="modal-heading">
-
-              <p>
-                {selectedCertificate.organization}
-              </p>
-
-              <h3>
-                {selectedCertificate.title}
-              </h3>
-
-            </div>
-
-            <div className="modal-image-container">
-
-              {selectedCertificate.image ? (
-
-                <img
-                  src={selectedCertificate.image}
-                  alt={selectedCertificate.title}
-                />
-
-              ) : (
-
-                <p>
-                  Certificate image not found.
+                <p className="mt-4 leading-7 text-slate-400">
+                  {experience.description}
                 </p>
 
-              )}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      )}
-
-
-      {/* =====================================================
-          SKILLS
-          ===================================================== */}
-
-      <section id="skills" className="section">
-
-        <div className="container">
-
-          <p className="section-label">
-            TECHNOLOGIES
-          </p>
-
-          <h2 className="section-title">
-            Skills
-          </h2>
-
-          <div className="skills-container">
-
-            {skills.map((skill) => (
-
-              <span
-                className="skill-pill"
-                key={skill}
-              >
-                {skill}
-              </span>
-
+              </div>
             ))}
 
           </div>
-
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          CONTACT
-          ===================================================== */}
-
+      {/* CERTIFICATIONS */}
       <section
-        id="contact"
-        className="section dark-section"
+        id="certifications"
+        className="border-t border-white/5 px-6 py-24"
       >
+        <div className="mx-auto max-w-7xl">
 
-        <div className="container contact-container">
-
-          <p className="section-label">
-            GET IN TOUCH
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            Achievements
           </p>
 
-          <h2 className="section-title">
+          <h2 className="mt-3 text-4xl font-black">
+            Certifications
+          </h2>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+            {certificates.map((certificate, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-2xl border border-white/10 bg-[#0b1035]/70 transition hover:-translate-y-2 hover:border-indigo-500/40"
+              >
+
+                <div className="h-48 overflow-hidden bg-slate-900">
+                  <img
+                    src={certificate.image}
+                    alt={certificate.title}
+                    className="h-full w-full object-cover transition duration-300 hover:scale-105"
+                  />
+                </div>
+
+                <div className="p-5">
+
+                  <h3 className="font-bold">
+                    {certificate.title}
+                  </h3>
+
+                  <p className="mt-1 text-sm text-slate-400">
+                    {certificate.organization}
+                  </p>
+
+                  <button
+                    onClick={() => setSelectedCertificate(certificate)}
+                    className="mt-5 rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold transition hover:bg-indigo-500"
+                  >
+                    View Certificate
+                  </button>
+
+                </div>
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </section>
+
+      {/* SKILLS */}
+      <section
+        id="skills"
+        className="border-t border-white/5 px-6 py-24"
+      >
+        <div className="mx-auto max-w-5xl">
+
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            Technical Skills
+          </p>
+
+          <h2 className="mt-3 text-4xl font-black">
+            Skills
+          </h2>
+
+          <div className="mt-10 flex flex-wrap gap-3">
+
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="rounded-xl border border-white/10 bg-[#0b1035] px-5 py-3 font-semibold text-slate-200 transition hover:border-indigo-500/40 hover:text-indigo-300"
+              >
+                {skill}
+              </span>
+            ))}
+
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section
+        id="contact"
+        className="border-t border-white/5 px-6 py-24"
+      >
+        <div className="mx-auto max-w-4xl text-center">
+
+          <p className="text-sm font-bold uppercase tracking-[0.25em] text-indigo-400">
+            Contact
+          </p>
+
+          <h2 className="mt-3 text-4xl font-black">
             Let's Connect
           </h2>
 
-          <p className="contact-text">
-            Interested in data analytics, technology and building
-            useful projects. Feel free to connect with me.
+          <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-400">
+            Interested in collaborating, discussing a project or connecting
+            professionally? Feel free to reach out.
           </p>
 
-
-          <div className="contact-buttons">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
 
             <a
               href="mailto:vaishnaviksonwane2006@gmail.com"
-              className="primary-btn"
+              className="rounded-lg bg-indigo-600 px-6 py-3 font-semibold transition hover:bg-indigo-500"
             >
               Email Me
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/vaishnavi-sonwane-ba4274342/"
-              target="_blank"
-              rel="noreferrer"
-              className="secondary-btn"
-            >
-              LinkedIn ↗
             </a>
 
             <a
               href="https://github.com/Vaishnavi-Sonwane"
               target="_blank"
               rel="noreferrer"
-              className="secondary-btn"
+              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-indigo-400"
             >
-              GitHub ↗
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/vaishnavi-sonwane-ba4274342/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-lg border border-slate-700 px-6 py-3 font-semibold transition hover:border-indigo-400"
+            >
+              LinkedIn
             </a>
 
           </div>
 
+        </div>
+      </section>
 
-          <div className="email-display">
-            vaishnaviksonwane2006@gmail.com
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 px-6 py-8 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} Vaishnavi Sonwane. All rights reserved.
+      </footer>
+
+      {/* CERTIFICATE MODAL */}
+      {selectedCertificate && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-5 backdrop-blur-sm"
+          onClick={() => setSelectedCertificate(null)}
+        >
+
+          <div
+            className="relative max-h-[90vh] max-w-5xl overflow-auto rounded-2xl border border-white/10 bg-[#0b1035] p-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              onClick={() => setSelectedCertificate(null)}
+              className="absolute right-4 top-4 z-10 rounded-full bg-black/70 px-3 py-2 text-white hover:bg-black"
+            >
+              ✕
+            </button>
+
+            <img
+              src={selectedCertificate.image}
+              alt={selectedCertificate.title}
+              className="max-h-[80vh] w-auto rounded-lg"
+            />
+
           </div>
 
         </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FOOTER
-          ===================================================== */}
-
-      <footer className="footer">
-
-        <p>
-          © 2026 Vaishnavi Sonwane. All rights reserved.
-        </p>
-
-        <div>
-
-          <a
-            href="https://github.com/Vaishnavi-Sonwane"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub
-          </a>
-
-          <a
-            href="https://www.linkedin.com/in/vaishnavi-sonwane-ba4274342/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            LinkedIn
-          </a>
-
-        </div>
-
-      </footer>
+      )}
 
     </div>
   );

@@ -17,16 +17,29 @@
   }
 }
 
-.hero {
-  position: relative;
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
 
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
+.hero-content {
+  text-align: left;
+}
 
+.hero-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-profile-image {
+  width: 380px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 200px 200px 30px 30px;
+}
   .base {
     width: 170px;
     position: relative;
@@ -54,7 +67,6 @@
     transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
       scale(0.8);
   }
-}
 
 #center {
   display: flex;

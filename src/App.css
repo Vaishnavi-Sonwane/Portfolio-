@@ -21,12 +21,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: translateX(-25px);
+}
+
+.hero-profile-image {
+  width: 330px;
+  height: 390px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50% / 45%;
+  border: 3px solid rgba(80, 180, 255, 0.8);
+  box-shadow:
+    0 0 0 8px rgba(80, 180, 255, 0.08),
+    0 0 0 14px rgba(40, 150, 255, 0.08),
+    0 0 30px rgba(40, 150, 255, 0.35);
 }
 
 .hero-image-section .relative {
   position: relative;
 }
+@media (max-width: 900px) {
+  .hero-image-section {
+    transform: none;
+  }
 
+  .hero-profile-image {
+    width: 280px;
+    height: 340px;
+  }
+}
 /* Profile image */
 .hero-image-section img {
   width: 100%;
